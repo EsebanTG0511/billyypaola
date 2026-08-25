@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ═══════════ CÓMO SE VE AL COMPARTIR POR WHATSAPP ═══════════ -->
+<title>Billy &amp; Paola · 10 de octubre de 2026</title>
+<meta name="description" content="Después de trece años, nos casamos. Aquí está todo lo que necesitas saber.">
+<meta property="og:title" content="Billy &amp; Paola se casan">
+<meta property="og:description" content="Sábado 10 de octubre de 2026 · Bogotá. Toca para ver la invitación.">
+<meta property="og:type" content="website">
+<!-- ▸ Cuando publiques, pon aquí el link de una foto de ustedes (1200x630 px) -->
+<meta property="og:image" content="">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════ COLORES ═══════════════ */
+:root{
+  --noche:#061530;        /* azul oscuro profundo */
+  --noche-2:#04101F;
+  --nube:#EEF2F8;         /* fondo claro */
+  --tinta:#123055;        /* azul oscuro, texto */
+  --cielo:#456590;        /* azul medio, texto secundario */
+  --cielo-claro:#8FB3D9;  /* azul claro, decorativo */
+  --dorado:#C8A44D;
+  --dorado-luz:#E3C77E;
+
+  --display:'Italiana', serif;
+  --texto:'Cormorant Garamond', Georgia, serif;
+  --util:'Jost', system-ui, sans-serif;
+
+  --aire:clamp(4.5rem, 12vw, 9rem);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--nube);
+  color:var(--tinta);
+  font-family:var(--texto);
+  font-size:clamp(1.075rem,.95rem + .55vw,1.3rem);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+body.bloqueado{overflow:hidden}
+::selection{background:var(--dorado);color:var(--noche)}
+:focus-visible{outline:2px solid var(--dorado);outline-offset:4px;border-radius:2px}
+
+/* ═══════════════ ENTRADA: EXPLOSIÓN Y CORAZÓN ═══════════════ */
+#intro{
+  position:fixed;inset:0;z-index:999;
+  background:var(--noche);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .75s ease;
+  cursor:pointer;
+}
+#intro.saliendo{opacity:0}
+#lienzo{display:block;width:100%;height:100%}
+
+/* Pantalla de bienvenida: el toque que le da permiso al sonido */
+#puerta{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;
+  transition:opacity .5s ease;
+}
+#puerta.ida{opacity:0;pointer-events:none}
+#puerta .nombre-puerta{
+  font-family:var(--display);
+  font-size:clamp(2rem,1.2rem + 4vw,3.2rem);
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--nube);margin-bottom:2.2rem;
+}
+#puerta .nombre-puerta i{font-style:normal;color:var(--dorado)}
+#puerta svg{
+  width:clamp(3.4rem,10vw,4.6rem);height:auto;
+  animation:latido 2.2s ease-in-out infinite;
+}
+#puerta .toque{
+  font-family:var(--util);font-size:.7rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--nube);margin-top:2rem;
+}
+#puerta .aviso{
+  font-family:var(--util);font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(238,242,248,.4);margin-top:.9rem;
+}
+@keyframes latido{
+  0%,100%{transform:scale(1)}
+  14%{transform:scale(1.13)}
+  28%{transform:scale(1)}
+  42%{transform:scale(1.09)}
+}
+
+/* ═══════════════ TIPOGRAFÍA ═══════════════ */
+.rotulo{
+  font-family:var(--util);font-size:.68rem;font-weight:400;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--cielo);
+}
+h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(2.4rem,1.6rem + 3.4vw,3.9rem);
+  line-height:1.1;letter-spacing:.01em;
+}
+h3{
+  font-family:var(--texto);font-weight:500;
+  font-size:clamp(1.25rem,1.1rem + .7vw,1.55rem);line-height:1.3;
+}
+
+/* ═══════════════ ESTRUCTURA ═══════════════ */
+.franja{padding:var(--aire) 1.5rem}
+.centro{max-width:34rem;margin:0 auto;text-align:center}
+.ancho{max-width:44rem;margin:0 auto}
+
+/* El hilo dorado que recorre la página entera */
+.hilo{
+  width:1px;height:clamp(3.5rem,9vw,6rem);
+  background:linear-gradient(var(--dorado),rgba(200,164,77,.15));
+  margin:0 auto;
+  transform:scaleY(0);transform-origin:top;
+  transition:transform 1.1s cubic-bezier(.22,.61,.36,1);
+}
+.hilo.visible{transform:scaleY(1)}
+
+/* ═══════════════ PORTADA ═══════════════ */
+.portada{
+  background:var(--noche);color:var(--nube);
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:5rem 1.5rem 3rem;position:relative;text-align:center;
+}
+.portada::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 55% at 50% 42%,rgba(200,164,77,.14),transparent 70%);
+}
+.portada > *{position:relative;z-index:1}
+.portada .globos{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.portada .rotulo{color:rgba(238,242,248,.55)}
+
+.nombres{
+  font-family:var(--display);
+  font-size:clamp(3.4rem,1.2rem + 11vw,7.5rem);
+  line-height:.95;letter-spacing:.06em;text-transform:uppercase;
+  margin:1.6rem 0 1.9rem;color:var(--nube);
+}
+.nombres .amp{
+  display:block;font-size:.34em;color:var(--dorado);
+  letter-spacing:.2em;margin:.5rem 0;
+}
+.fecha-portada{
+  font-family:var(--util);font-weight:300;font-size:.82rem;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(238,242,248,.8);line-height:2.2;
+}
+.regla{width:2.5rem;height:1px;background:var(--dorado);margin:2.2rem auto;opacity:.8}
+.cue{
+  position:absolute;bottom:2.2rem;left:0;right:0;
+  font-family:var(--util);font-size:.62rem;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(238,242,248,.45);
+}
+.cue span{
+  display:block;width:1px;height:2.6rem;background:rgba(200,164,77,.55);
+  margin:.9rem auto 0;animation:respira 2.8s ease-in-out infinite;
+}
+@keyframes respira{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+/* ═══════════════ LA CARTA ═══════════════ */
+.carta{padding-top:clamp(4rem,10vw,7rem)}
+.carta p{
+  font-size:clamp(1.2rem,1rem + .8vw,1.5rem);
+  font-weight:300;line-height:1.75;margin-bottom:1.4rem;
+}
+.carta p:last-of-type{margin-bottom:2.4rem}
+.firma{font-family:var(--display);font-size:1.5rem;letter-spacing:.08em;color:var(--cielo)}
+
+/* ═══════════════ MOMENTOS ═══════════════ */
+.momento{max-width:26rem;margin:0 auto;text-align:center}
+.marca{
+  display:block;font-family:var(--util);font-size:.72rem;font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--dorado);
+  margin-bottom:.85rem;
+}
+.momento h3{margin-bottom:.4rem}
+.momento p{font-weight:300;color:var(--cielo);line-height:1.6}
+
+/* ═══════════════ CUENTA REGRESIVA ═══════════════ */
+.conteo{display:flex;justify-content:center;gap:clamp(1.1rem,5vw,2.6rem);margin-top:1.8rem}
+.conteo div{min-width:3.2rem}
+.conteo b{
+  display:block;font-family:var(--display);
+  font-size:clamp(2.4rem,1.4rem + 4vw,3.6rem);
+  font-weight:400;line-height:1;font-variant-numeric:tabular-nums;
+}
+.conteo small{
+  font-family:var(--util);font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--cielo);
+}
+
+/* ═══════════════ LUGAR ═══════════════ */
+.lugar{
+  border:1px solid rgba(18,48,85,.16);
+  padding:clamp(2rem,5vw,3rem) 1.6rem;text-align:center;
+  max-width:30rem;margin:0 auto;background:rgba(255,255,255,.5);
+}
+.lugar h3{margin-bottom:.6rem}
+.lugar .dir{font-weight:300;color:var(--cielo);margin-bottom:1.6rem;line-height:1.55}
+
+/* ═══════════════ BOTONES ═══════════════ */
+.btn{
+  display:inline-block;font-family:var(--util);font-size:.72rem;
+  letter-spacing:.2em;text-transform:uppercase;padding:1rem 2.1rem;
+  text-decoration:none;border:1px solid var(--tinta);color:var(--tinta);
+  background:transparent;transition:background .35s ease,color .35s ease;
+}
+.btn:hover{background:var(--tinta);color:var(--nube)}
+.btn.lleno{background:var(--tinta);color:var(--nube)}
+.btn.lleno:hover{background:var(--noche);border-color:var(--noche)}
+
+/* ═══════════════ VESTIMENTA ═══════════════ */
+.veto{
+  display:flex;justify-content:center;gap:1.6rem;
+  margin:2rem 0 1.4rem;flex-wrap:wrap;
+}
+.veto figure{width:4.2rem;text-align:center}
+.veto span{
+  display:block;width:3rem;height:3rem;border-radius:50%;margin:0 auto .55rem;
+  position:relative;border:1px solid rgba(18,48,85,.25);
+}
+.veto span::after{
+  content:'';position:absolute;left:-4px;right:-4px;top:50%;
+  height:1px;background:#B3453E;transform:rotate(-45deg);
+}
+.veto figcaption{
+  font-family:var(--util);font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cielo);line-height:1.4;
+}
+
+/* ═══════════════ DETALLES ═══════════════ */
+.detalles{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:2.4rem 2rem;margin-top:3rem;text-align:left;
+}
+.detalles h3{font-size:1.1rem;margin-bottom:.35rem}
+.detalles p{font-size:.98rem;font-weight:300;color:var(--cielo);line-height:1.55}
+.detalles strong{font-weight:500;color:var(--tinta)}
+
+/* ═══════════════ CIERRE ═══════════════ */
+.cierre{background:var(--noche-2);color:var(--nube);text-align:center;padding:var(--aire) 1.5rem 4rem}
+.cierre .rotulo{color:rgba(238,242,248,.5)}
+.monograma{
+  font-family:var(--display);font-size:clamp(3rem,2rem + 5vw,5rem);
+  letter-spacing:.1em;margin:1.4rem 0 .8rem;
+}
+.monograma i{font-style:normal;color:var(--dorado)}
+.cierre .fecha-portada{color:rgba(238,242,248,.65)}
+
+/* ═══════════════ BOTÓN FLOTANTE ═══════════════ */
+.flotante{
+  position:fixed;left:50%;bottom:1.2rem;transform:translate(-50%,150%);
+  z-index:50;background:var(--tinta);color:var(--nube);border:none;
+  font-family:var(--util);font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;padding:.95rem 1.9rem;text-decoration:none;
+  box-shadow:0 6px 24px rgba(6,21,48,.3);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1);
+}
+.flotante.activo{transform:translate(-50%,0)}
+
+/* ═══════════════ SONIDO ═══════════════ */
+.sonido{
+  position:fixed;top:1.1rem;right:1.1rem;z-index:70;
+  width:2.8rem;height:2.8rem;border-radius:50%;
+  border:1px solid rgba(200,164,77,.55);
+  background:rgba(6,21,48,.5);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;gap:3px;
+  cursor:pointer;padding:0;
+  opacity:0;transform:scale(.75);pointer-events:none;
+  transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.sonido.activo{opacity:1;transform:none;pointer-events:auto}
+.sonido b{display:block;width:2px;height:6px;border-radius:1px;background:var(--dorado)}
+.sonido:not(.suena) b{opacity:.45;height:5px}
+.sonido.suena b{animation:ecualiza .95s ease-in-out infinite}
+.sonido.suena b:nth-child(2){animation-delay:.18s}
+.sonido.suena b:nth-child(3){animation-delay:.36s}
+@keyframes ecualiza{0%,100%{height:5px}50%{height:15px}}
+
+/* ═══════════════ GLOBOS ═══════════════ */
+#fiesta{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:60}
+.globo{position:absolute;top:0;will-change:transform;animation:caer linear infinite}
+.globo i{display:block;animation:vaiven ease-in-out infinite alternate}
+.globo svg{display:block}
+@keyframes caer{from{transform:translate3d(0,-28vh,0)}to{transform:translate3d(0,118vh,0)}}
+@keyframes vaiven{from{transform:translateX(-13px) rotate(-8deg)}to{transform:translateX(13px) rotate(8deg)}}
+
+/* ═══════════════ REVELADO AL DESPLAZAR ═══════════════ */
+.rev{opacity:0;transform:translateY(22px);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.rev.visible{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rev{opacity:1;transform:none;transition:none}
+  .hilo{transform:scaleY(1);transition:none}
+  .cue span{animation:none}
+  .flotante{transition:none}
+  .portada .globos,#fiesta,#intro{display:none}
+  .sonido{transition:none}
+  .sonido.suena b{animation:none;height:11px}
+}
+</style>
+<noscript><style>#intro{display:none}.rev{opacity:1;transform:none}.hilo{transform:scaleY(1)}</style></noscript>
+</head>
+<body>
+
+<!-- ═══════════ MÚSICA ═══════════
+     ▸ Pon el archivo de la canción al lado de este HTML y llámalo musica.mp3
+       (o cambia el nombre aquí abajo). Si no hay archivo, el botón no aparece. -->
+<audio id="cancion" src="musica.mp3" preload="auto"></audio>
+
+<button class="sonido" id="sonido" type="button" aria-label="Activar o silenciar la música">
+  <b></b><b></b><b></b>
+</button>
+
+
+<!-- ═══════════ ENTRADA ═══════════ -->
+<div id="intro">
+  <canvas id="lienzo"></canvas>
+
+  <div id="puerta" role="button" tabindex="0" aria-label="Toca para abrir la invitación">
+    <p class="nombre-puerta">Billy <i>&amp;</i> Paola</p>
+
+    <svg viewBox="0 0 32 29" fill="none" aria-hidden="true">
+      <path d="M16 27S2 18.6 2 9.7A7.7 7.7 0 0 1 16 5.4 7.7 7.7 0 0 1 30 9.7C30 18.6 16 27 16 27Z"
+            stroke="#C8A44D" stroke-width="1.3" stroke-linejoin="round"/>
+    </svg>
+
+    <p class="toque">Toca para abrir</p>
+    <p class="aviso">Sube el volumen</p>
+  </div>
+</div>
+
+
+<!-- ═══════════ PORTADA ═══════════ -->
+<header class="portada">
+  <div class="globos" id="globos" aria-hidden="true"></div>
+
+  <p class="rotulo">Nos casamos</p>
+
+  <h1 class="nombres">
+    Billy
+    <span class="amp">&amp;</span>
+    Paola
+  </h1>
+
+  <div class="regla"></div>
+
+  <p class="fecha-portada">
+    Sábado 10 de octubre de 2026<br>
+    Bogotá D.C.
+  </p>
+
+  <p class="cue">Desliza<span></span></p>
+</header>
+
+
+<!-- ═══════════ LA CARTA ═══════════ -->
+<section class="franja carta">
+  <div class="centro ancho rev">
+    <p class="rotulo" style="margin-bottom:2.2rem">Para ti</p>
+
+    <p>Hay días que uno recuerda por lo que pasó. Este lo queremos recordar por quiénes estuvieron.</p>
+
+    <p>Llevamos trece años, dos hijos y una casa que aprendimos a armar entre los dos. Nos faltaba una sola cosa, y es la que vamos a hacer el 10 de octubre.</p>
+
+    <p>Abajo está todo: la hora, el lugar, cómo llegar y cómo confirmarnos. Léelo con calma y aparta el día completo.</p>
+
+    <p class="firma">Billy y Paola</p>
+  </div>
+</section>
+
+<div class="hilo rev"></div>
+
+
+<!-- ═══════════ LA HISTORIA ═══════════ -->
+<section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="centro rev" style="margin-bottom:clamp(3rem,7vw,4.5rem)">
+    <p class="rotulo">Cómo llegamos hasta aquí</p>
+    <h2 style="margin-top:1rem">Trece años<br>en cinco fechas</h2>
+  </div>
+
+  <div class="momento rev">
+    <span class="marca">El principio</span>
+    <h3>La misma planta, y ni idea</h3>
+    <p>Trabajábamos en el mismo lugar, en la misma planta, y nunca nos habíamos visto. Hasta que una compañera nos presentó.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">9 de marzo de 2013</span>
+    <h3>Un sábado en el Simón Bolívar</h3>
+    <p>Ese día dijimos que sí por primera vez. No sabíamos que estábamos empezando a contar.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">10 de agosto de 2014</span>
+    <h3>Llegó Valentina</h3>
+    <p>La noticia nos cayó un noviembre. Nueve meses después ya éramos tres.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">9 de julio de 2018</span>
+    <h3>Llegó Nicolás</h3>
+    <p>Otra vez un noviembre, otra vez la misma cara de susto y de dicha. Nico completó la casa.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">10 de octubre de 2026</span>
+    <h3>El sí que faltaba</h3>
+    <p>Trece años después, con dos testigos de excepción, lo hacemos oficial.</p>
+  </div>
+</section>
+
+<div class="hilo rev"></div>
+
+
+<!-- ═══════════ CUENTA REGRESIVA ═══════════ -->
+<section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="centro rev">
+    <p class="rotulo">Y ahora</p>
+    <div class="conteo" id="conteo">
+      <div><b data-c="d">—</b><small>días</small></div>
+      <div><b data-c="h">—</b><small>horas</small></div>
+      <div><b data-c="m">—</b><small>min</small></div>
+      <div><b data-c="s">—</b><small>seg</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="hilo rev"></div>
+
+
+<!-- ═══════════ EL DÍA ═══════════ -->
+<section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="centro rev" style="margin-bottom:clamp(3rem,7vw,4.5rem)">
+    <p class="rotulo">Sábado 10 de octubre</p>
+    <h2 style="margin-top:1rem">El día,<br>hora por hora</h2>
+  </div>
+
+  <!-- ▸ Ajusta las horas reales del salón -->
+  <div class="momento rev">
+    <span class="marca">3:30 p.m.</span>
+    <h3>Llegada</h3>
+    <p>Ven con tiempo. Hay bienvenida mientras todos se acomodan.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">4:00 p.m.</span>
+    <h3>Ceremonia</h3>
+    <p>Empieza puntual. Después de esta hora ya no podremos abrir la puerta.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">5:30 p.m.</span>
+    <h3>Brindis y fotos</h3>
+    <p>El primer brindis, y la foto con ustedes que llevamos años debiendo.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">7:00 p.m.</span>
+    <h3>Cena</h3>
+    <p>Mesas asignadas. Encuentras tu nombre en la entrada del salón.</p>
+  </div>
+
+  <div class="hilo rev"></div>
+
+  <div class="momento rev">
+    <span class="marca">9:00 p.m.</span>
+    <h3>Fiesta</h3>
+    <p>Hasta que se acabe la música. Trae zapatos de repuesto, hablamos en serio.</p>
+  </div>
+</section>
+
+<div class="hilo rev"></div>
+
+
+<!-- ═══════════ EL LUGAR ═══════════ -->
+<section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="centro rev" style="margin-bottom:2.6rem">
+    <p class="rotulo">Dónde</p>
+  </div>
+
+  <div class="lugar rev">
+    <h3>Casa Victoria</h3>
+    <p class="dir">
+      Salón de eventos<br>
+      Carrera 4 Este # 37C&#8209;50<br>
+      Bogotá D.C.<br>
+      <span style="font-size:.9rem">Salón: 320 970 8652</span>
+    </p>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera%204%20Este%20%2337C-50%20Bogot%C3%A1" target="_blank" rel="noopener">Cómo llegar</a>
+  </div>
+</section>
+
+<div class="hilo rev"></div>
+
+
+<!-- ═══════════ VESTIMENTA ═══════════ -->
+<section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="centro rev">
+    <p class="rotulo">Cómo vestirte</p>
+    <h2 style="margin:1rem 0 1.2rem">Formal</h2>
+    <p style="font-weight:300;color:var(--cielo)">
+      Con una sola condición: estos tres colores están reservados.
+    </p>
+
+    <div class="veto" aria-hidden="true">
+      <figure><span style="background:#FFFFFF"></span><figcaption>Blanco</figcaption></figure>
+      <figure><span style="background:#123055"></span><figcaption>Azul oscuro</figcaption></figure>
+      <figure><span style="background:#8FB3D9"></span><figcaption>Azul claro</figcaption></figure>
+    </div>
+
+    <p style="font-weight:300;color:var(--cielo)">
+      El blanco es de la novia. El azul, claro y oscuro, es de la fiesta.
+      Todo lo demás es bienvenido.
+    </p>
+  </div>
+</section>
+
+<div class="hilo rev"></div>
+
+
+<!-- ═══════════ CONFIRMACIÓN ═══════════ -->
+<section class="franja" id="confirmar" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="centro rev">
+    <p class="rotulo">Lo más importante</p>
+    <h2 style="margin:1rem 0 1.4rem">¿Contamos<br>contigo?</h2>
+    <p style="font-weight:300;color:var(--cielo);margin-bottom:2.2rem">
+      Escríbenos por WhatsApp antes del <strong style="font-weight:500;color:var(--tinta)">20 de septiembre</strong>.
+      Los cupos son personales: en la invitación dice cuántas personas incluye.
+    </p>
+    <!-- ▸ Cambia el número: 57 + celular, sin espacios ni signos -->
+    <a class="btn lleno" id="rsvp"
+       href="https://wa.me/573001234567?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20su%20matrimonio%20el%2010%20de%20octubre.%20Vamos%3A%20"
+       target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+  </div>
+</section>
+
+<div class="hilo rev"></div>
+
+
+<!-- ═══════════ DETALLES ═══════════ -->
+<section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="ancho">
+    <div class="centro rev"><p class="rotulo">Antes de que preguntes</p></div>
+
+    <div class="detalles rev">
+      <div>
+        <h3>Niños</h3>
+        <p>Valentina y Nicolás son parte de este día. Si vienes con los tuyos, avísanos al confirmar para reservarles puesto.</p>
+      </div>
+      <div>
+        <h3>Cómo llegar</h3>
+        <p>El salón queda sobre la Carrera 4 Este con Calle 37C, en el oriente de la ciudad. Si vienes en taxi o app, pide <strong>Casa Victoria</strong>.</p>
+      </div>
+      <div>
+        <h3>Parqueadero</h3>
+        <p>▸ Confirma con el salón y escribe aquí si hay parqueadero o dónde dejar el carro.</p>
+      </div>
+      <div>
+        <h3>Regalos</h3>
+        <p>Tu presencia ya es suficiente. Si quieres consentirnos, preferimos lluvia de sobres.</p>
+      </div>
+      <div>
+        <h3>Fotos</h3>
+        <p>Durante la ceremonia, guarda el celular. Después, súbelas todas con <strong>#BillyYPaolaSeCasan</strong></p>
+      </div>
+      <div>
+        <h3>Dudas</h3>
+        <p>Escríbenos por WhatsApp. Preferimos responderte a que te quedes con la pregunta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ CIERRE ═══════════ -->
+<footer class="cierre">
+  <div class="rev">
+    <p class="rotulo">Te esperamos</p>
+    <p class="monograma">B <i>&amp;</i> P</p>
+    <p class="fecha-portada">10 · 10 · 2026</p>
+  </div>
+</footer>
+
+<a class="flotante" id="flotante" href="#confirmar">Confirmar asistencia</a>
+<div id="fiesta" aria-hidden="true"></div>
+
+
+<script>
+/* ═══════════════════ CONFIGURACIÓN ═══════════════════
+   Cambia estas líneas y listo.                                     */
+
+const FECHA_BODA = new Date('2026-10-10T16:00:00-05:00');  /* cuenta regresiva */
+const CANTIDAD_GLOBOS = window.innerWidth < 600 ? 11 : 18;  /* 0 para quitarlos */
+const PALETA = ['#C8A44D','#E3C77E','#8FB3D9','#EEF2F8'];   /* dorado y azules */
+
+const quietud = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+/* ═══════════ ENTRADA: EXPLOSIÓN QUE SE VUELVE CORAZÓN ═══════════ */
+(function(){
+  const intro = document.getElementById('intro');
+  const lienzo = document.getElementById('lienzo');
+
+  if (quietud){ intro.remove(); return; }
+
+  document.body.classList.add('bloqueado');
+  window.scrollTo(0,0);
+
+  const ctx = lienzo.getContext('2d');
+  let an, al, cx, cy, escala;
+
+  function medir(){
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    an = lienzo.clientWidth; al = lienzo.clientHeight;
+    lienzo.width = an * dpr; lienzo.height = al * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx = an/2; cy = al/2;
+    escala = Math.min(an, al) / 46;
+  }
+  medir();
+  window.addEventListener('resize', medir);
+
+  /* Cada partícula sale disparada y termina en un punto del corazón */
+  const TOTAL = 170;
+  const chispas = [];
+  for (let i = 0; i < TOTAL; i++){
+    const t = (i / TOTAL) * Math.PI * 2;
+    chispas.push({
+      ang: Math.random() * Math.PI * 2,
+      vel: (0.22 + Math.random() * 0.85),
+      hx: 16 * Math.pow(Math.sin(t), 3),
+      hy: -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t)),
+      r: 1.1 + Math.random() * 1.9,
+      color: PALETA[Math.floor(Math.random() * PALETA.length)],
+      x: 0, y: 0
+    });
+  }
+
+  const EXPLOTA = 700, ARMA = 850, SOSTIEN = 700;
+  const salida = Math.min(an, al) * 0.55;
+  let inicio = null, vivo = true;
+
+  const easeOut  = p => 1 - Math.pow(1 - p, 3);
+  const easeBoth = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3)/2;
+
+  function cuadro(ahora){
+    if (!vivo) return;
+    if (inicio === null) inicio = ahora;
+    const t = ahora - inicio;
+
+    /* rastro: no se borra del todo, deja estela */
+    ctx.fillStyle = 'rgba(6,21,48,0.28)';
+    ctx.fillRect(0, 0, an, al);
+
+    let pulso = 1;
+    if (t > EXPLOTA + ARMA){
+      pulso = 1 + Math.sin((t - EXPLOTA - ARMA) / 130) * 0.045;
+    }
+
+    for (const c of chispas){
+      if (t < EXPLOTA){
+        const p = easeOut(t / EXPLOTA) * c.vel * salida;
+        c.x = cx + Math.cos(c.ang) * p;
+        c.y = cy + Math.sin(c.ang) * p;
+      } else if (t < EXPLOTA + ARMA){
+        const p = easeBoth((t - EXPLOTA) / ARMA);
+        const dx = cx + c.hx * escala, dy = cy + c.hy * escala;
+        c.x += (dx - c.x) * p * 0.22;
+        c.y += (dy - c.y) * p * 0.22;
+      } else {
+        c.x = cx + c.hx * escala * pulso;
+        c.y = cy + c.hy * escala * pulso;
+      }
+
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+      ctx.fillStyle = c.color;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = c.color;
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+
+    if (t > EXPLOTA + ARMA + SOSTIEN){ terminar(); return; }
+    requestAnimationFrame(cuadro);
+  }
+
+  /* Nada arranca hasta que el invitado toca. Ese toque es lo que
+     le da permiso al navegador para dejar sonar la música.        */
+  const puerta = document.getElementById('puerta');
+  let abierto = false;
+
+  function abrir(){
+    if (abierto) return;
+    abierto = true;
+
+    /* Primero la música: tiene que ir dentro del mismo toque,
+       si se demora un instante el navegador ya no la deja sonar. */
+    arrancarMusica();
+
+    puerta.classList.add('ida');
+    requestAnimationFrame(cuadro);
+  }
+
+  puerta.addEventListener('click', abrir);
+  puerta.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); abrir(); }
+  });
+
+  function terminar(){
+    if (!vivo) return;
+    vivo = false;
+    intro.classList.add('saliendo');
+    document.body.classList.remove('bloqueado');
+    setTimeout(() => intro.remove(), 800);
+  }
+
+  /* Si alguien deja la página abierta sin tocar, se abre sola al minuto
+     (sin música, porque el navegador no la deja) para que nadie quede trabado */
+  setTimeout(() => { if (!abierto) terminar(); }, 60000);
+})();
+
+
+/* ═══════════ MÚSICA ═══════════
+   VOLUMEN         0 es mudo, 1 es el tope. 0.5 es la mitad.
+   INICIO_MUSICA   En qué segundo arranca la canción.
+                   Se cuenta en segundos: 1:20 son 80, y 2:05 son 125.
+   FIN_MUSICA      En qué segundo se devuelve al punto de inicio.
+                   Déjalo en 0 para que suene hasta el final del archivo.  */
+const VOLUMEN       = 0.5;
+const INICIO_MUSICA = 0;
+const FIN_MUSICA    = 0;
+
+const cancion = document.getElementById('cancion');
+const botonSonido = document.getElementById('sonido');
+
+/* Si el archivo no existe o el navegador no lo soporta, quitamos el botón */
+cancion.addEventListener('error', () => botonSonido.remove());
+
+/* Saltar a un segundo solo funciona cuando el navegador ya midió el archivo */
+function irAlInicio(){
+  if (INICIO_MUSICA <= 0) return;
+  const saltar = () => { try { cancion.currentTime = INICIO_MUSICA; } catch(e){} };
+  if (cancion.readyState >= 1) saltar();
+  else cancion.addEventListener('loadedmetadata', saltar, { once:true });
+}
+
+/* Al repetir vuelve al punto de inicio, no al segundo cero */
+cancion.addEventListener('ended', () => {
+  cancion.currentTime = INICIO_MUSICA;
+  cancion.play();
+});
+cancion.addEventListener('timeupdate', () => {
+  if (FIN_MUSICA > 0 && cancion.currentTime >= FIN_MUSICA){
+    cancion.currentTime = INICIO_MUSICA;
+  }
+});
+
+function arrancarMusica(){
+  botonSonido.classList.add('activo');
+  cancion.volume = 0;
+  irAlInicio();
+  cancion.play().then(() => {
+    botonSonido.classList.add('suena');
+    /* sube el volumen de a poquitos, no de golpe */
+    const paso = setInterval(() => {
+      cancion.volume = Math.min(VOLUMEN, cancion.volume + 0.02);
+      if (cancion.volume >= VOLUMEN) clearInterval(paso);
+    }, 60);
+  }).catch(() => {
+    /* algunos navegadores no dejan sonar solos: el invitado decide */
+  });
+}
+
+botonSonido.addEventListener('click', () => {
+  if (cancion.paused){
+    cancion.volume = VOLUMEN;
+    cancion.play();          /* retoma donde iba, no vuelve a empezar */
+    botonSonido.classList.add('suena');
+  } else {
+    cancion.pause();
+    botonSonido.classList.remove('suena');
+  }
+});
+
+/* Si la entrada está desactivada, el botón aparece igual */
+if (quietud) botonSonido.classList.add('activo');
+
+
+/* ═══════════ GLOBOS ═══════════ */
+function crearGlobo(rapido){
+  const color = PALETA[Math.floor(Math.random() * PALETA.length)];
+  const ancho = 16 + Math.random() * 22;
+
+  const g = document.createElement('div');
+  g.className = 'globo';
+  g.style.left = (Math.random() * 100) + '%';
+  g.style.opacity = (0.3 + Math.random() * 0.45).toFixed(2);
+  g.style.animationDuration = (rapido ? 5 + Math.random()*4 : 13 + Math.random()*13) + 's';
+  g.style.animationDelay = '-' + (Math.random()*20).toFixed(1) + 's';
+  g.innerHTML =
+    '<i style="animation-duration:' + (2.6 + Math.random()*2.6).toFixed(1) + 's">' +
+      '<svg width="' + ancho + '" viewBox="0 0 30 48" fill="none">' +
+        '<path d="M15 33.5c7.2 0 13-7.2 13-16S22.2 1 15 1 2 8.7 2 17.5s5.8 16 13 16Z" fill="' + color + '"/>' +
+        '<path d="M13.2 33.2h3.6L15 36.6l-1.8-3.4Z" fill="' + color + '"/>' +
+        '<path d="M15 36.6c2.6 2.4-2.6 4 0 6.4s-1 3-1 5" stroke="' + color + '" stroke-width=".9" stroke-linecap="round" opacity=".55"/>' +
+        '<ellipse cx="10.5" cy="12" rx="2.6" ry="4.2" fill="#fff" opacity=".22"/>' +
+      '</svg>' +
+    '</i>';
+  return g;
+}
+
+if (!quietud && CANTIDAD_GLOBOS > 0){
+  const cielo = document.getElementById('globos');
+  for (let i = 0; i < CANTIDAD_GLOBOS; i++) cielo.appendChild(crearGlobo(false));
+}
+
+document.getElementById('rsvp').addEventListener('click', function(){
+  if (quietud) return;
+  const capa = document.getElementById('fiesta');
+  for (let i = 0; i < 26; i++){
+    const g = crearGlobo(true);
+    g.style.animationDelay = (Math.random()*1.2).toFixed(2) + 's';
+    g.style.animationIterationCount = '1';
+    g.addEventListener('animationend', () => g.remove());
+    capa.appendChild(g);
+  }
+});
+
+
+/* ═══════════ CUENTA REGRESIVA ═══════════ */
+const campos = {};
+document.querySelectorAll('#conteo b').forEach(b => campos[b.dataset.c] = b);
+
+function tic(){
+  const falta = FECHA_BODA - new Date();
+  if (falta <= 0){
+    document.getElementById('conteo').innerHTML =
+      '<p style="font-family:var(--display);font-size:2.2rem">Hoy es el día</p>';
+    return clearInterval(reloj);
+  }
+  const s = Math.floor(falta / 1000);
+  campos.d.textContent = Math.floor(s / 86400);
+  campos.h.textContent = String(Math.floor(s % 86400 / 3600)).padStart(2,'0');
+  campos.m.textContent = String(Math.floor(s % 3600 / 60)).padStart(2,'0');
+  campos.s.textContent = String(s % 60).padStart(2,'0');
+}
+tic();
+const reloj = setInterval(tic, 1000);
+
+
+/* ═══════════ REVELADO AL DESPLAZAR ═══════════ */
+const ojo = new IntersectionObserver(entradas => {
+  entradas.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('visible'); ojo.unobserve(e.target); }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+document.querySelectorAll('.rev, .hilo').forEach(el => ojo.observe(el));
+
+
+/* ═══════════ BOTÓN FLOTANTE ═══════════ */
+const flotante  = document.getElementById('flotante');
+const portada   = document.querySelector('.portada');
+const confirmar = document.getElementById('confirmar');
+
+new IntersectionObserver(([e]) => {
+  flotante.classList.toggle('activo', !e.isIntersecting);
+}, { threshold: 0 }).observe(portada);
+
+new IntersectionObserver(([e]) => {
+  if (e.isIntersecting) flotante.classList.remove('activo');
+}, { threshold: 0.2 }).observe(confirmar);
+</script>
+</body>
+</html>
