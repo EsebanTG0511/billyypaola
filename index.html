@@ -238,6 +238,22 @@ h3{
   text-transform:uppercase;color:var(--cielo);line-height:1.4;
 }
 
+/* ═══════════════ VERSÍCULOS ═══════════════ */
+.versiculo{max-width:29rem;margin:0 auto;text-align:center}
+.versiculo p{
+  font-family:var(--texto);
+  font-style:italic;font-weight:300;
+  font-size:clamp(1.2rem,1rem + .8vw,1.5rem);
+  line-height:1.6;
+}
+.versiculo cite{
+  display:block;
+  font-family:var(--util);font-style:normal;
+  font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--dorado);margin-top:1.2rem;
+}
+.cierre .versiculo p{color:rgba(238,242,248,.82)}
+
 /* ═══════════════ DETALLES ═══════════════ */
 .detalles{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
@@ -374,9 +390,7 @@ h3{
 
     <p>Hay días que uno recuerda por lo que pasó. Este lo queremos recordar por quiénes estuvieron.</p>
 
-    <p>Llevamos trece años, dos hijos y una casa que aprendimos a armar entre los dos. Nos faltaba una sola cosa, y es la que vamos a hacer el 10 de octubre.</p>
-
-    <p>Abajo está todo: la hora, el lugar, cómo llegar y cómo confirmarnos. Léelo con calma y aparta el día completo.</p>
+    <p>Llevamos trece años, dos hijos y una casa que aprendimos a armar entre los dos. Nos faltaba una sola cosa y quiza la mas importante, la bendición de Dios.</p>
 
     <p class="firma">Billy y Paola</p>
   </div>
@@ -390,6 +404,11 @@ h3{
   <div class="centro rev" style="margin-bottom:clamp(3rem,7vw,4.5rem)">
     <p class="rotulo">Cómo llegamos hasta aquí</p>
     <h2 style="margin-top:1rem">Trece años<br>en cinco fechas</h2>
+  </div>
+
+  <div class="versiculo rev" style="margin-bottom:clamp(3rem,7vw,4.5rem)">
+    <p>Mejores son dos que uno, porque si cayeren, el uno levantará a su compañero.</p>
+    <cite>Eclesiastés 4:9-10</cite>
   </div>
 
   <div class="momento rev">
@@ -457,17 +476,10 @@ h3{
     <h2 style="margin-top:1rem">El día,<br>hora por hora</h2>
   </div>
 
-  <!-- ▸ Ajusta las horas reales del salón -->
-  <div class="momento rev">
-    <span class="marca">3:30 p.m.</span>
-    <h3>Llegada</h3>
-    <p>Ven con tiempo. Hay bienvenida mientras todos se acomodan.</p>
-  </div>
-
   <div class="hilo rev"></div>
 
   <div class="momento rev">
-    <span class="marca">4:00 p.m.</span>
+    <span class="marca">6:00 p.m.</span>
     <h3>Ceremonia</h3>
     <p>Empieza puntual. Después de esta hora ya no podremos abrir la puerta.</p>
   </div>
@@ -475,23 +487,7 @@ h3{
   <div class="hilo rev"></div>
 
   <div class="momento rev">
-    <span class="marca">5:30 p.m.</span>
-    <h3>Brindis y fotos</h3>
-    <p>El primer brindis, y la foto con ustedes que llevamos años debiendo.</p>
-  </div>
-
-  <div class="hilo rev"></div>
-
-  <div class="momento rev">
-    <span class="marca">7:00 p.m.</span>
-    <h3>Cena</h3>
-    <p>Mesas asignadas. Encuentras tu nombre en la entrada del salón.</p>
-  </div>
-
-  <div class="hilo rev"></div>
-
-  <div class="momento rev">
-    <span class="marca">9:00 p.m.</span>
+    <span class="marca">7:30 p.m.</span>
     <h3>Fiesta</h3>
     <p>Hasta que se acabe la música. Trae zapatos de repuesto, hablamos en serio.</p>
   </div>
@@ -499,12 +495,24 @@ h3{
 
 <div class="hilo rev"></div>
 
-
-<!-- ═══════════ EL LUGAR ═══════════ -->
+<!-- ═══════════ IGLESIA ═══════════ -->
 <section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
   <div class="centro rev" style="margin-bottom:2.6rem">
     <p class="rotulo">Dónde</p>
   </div>
+
+  <div class="lugar rev">
+    <h3>Parroquia El Señor De La Columna</h3>
+    <p class="dir">
+      Iglesia<br>
+      Carrera 4 Este # 37C&#8209;50<br>
+      Bogotá D.C.<br>
+    </p>
+    <a class="btn" href="https://www.google.com/maps/place/Parroquia+El+Se%C3%B1or+de+La+Columna/@4.5555634,-74.0898012,180m/data=!3m1!1e3!4m6!3m5!1s0x8e3f989ace92b741:0x7a3a145722ebc6e7!8m2!3d4.55568!4d-74.08922!16s%2Fg%2F1tdn54f1?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Cómo llegar</a>
+  </div>
+</section>
+
+
 
   <div class="lugar rev">
     <h3>Casa Victoria</h3>
@@ -527,17 +535,18 @@ h3{
     <p class="rotulo">Cómo vestirte</p>
     <h2 style="margin:1rem 0 1.2rem">Formal</h2>
     <p style="font-weight:300;color:var(--cielo)">
-      Con una sola condición: estos tres colores están reservados.
+      Con una sola condición: estos cuatro colores están reservados.
     </p>
 
     <div class="veto" aria-hidden="true">
       <figure><span style="background:#FFFFFF"></span><figcaption>Blanco</figcaption></figure>
       <figure><span style="background:#123055"></span><figcaption>Azul oscuro</figcaption></figure>
       <figure><span style="background:#8FB3D9"></span><figcaption>Azul claro</figcaption></figure>
+      <figure><span style="background:#6c7c8d"></span><figcaption>Gris Claro</figcaption></figure>
     </div>
 
     <p style="font-weight:300;color:var(--cielo)">
-      El blanco es de la novia. El azul, claro y oscuro, es de la fiesta.
+      El blanco es de la novia. El azul (claro y oscuro),y el gris.
       Todo lo demás es bienvenido.
     </p>
   </div>
@@ -557,7 +566,11 @@ h3{
     </p>
     <!-- ▸ Cambia el número: 57 + celular, sin espacios ni signos -->
     <a class="btn lleno" id="rsvp"
-       href="https://wa.me/573001234567?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20su%20matrimonio%20el%2010%20de%20octubre.%20Vamos%3A%20"
+       href="https://wa.me/573115662232?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20su%20matrimonio%20el%2010%20de%20octubre.%20Vamos%3A%20"
+       target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+
+       <a class="btn lleno" id="rsvp"
+       href="https://wa.me/573214745304?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20su%20matrimonio%20el%2010%20de%20octubre.%20Vamos%3A%20"
        target="_blank" rel="noopener">Confirmar por WhatsApp</a>
   </div>
 </section>
@@ -580,10 +593,6 @@ h3{
         <p>El salón queda sobre la Carrera 4 Este con Calle 37C, en el oriente de la ciudad. Si vienes en taxi o app, pide <strong>Casa Victoria</strong>.</p>
       </div>
       <div>
-        <h3>Parqueadero</h3>
-        <p>▸ Confirma con el salón y escribe aquí si hay parqueadero o dónde dejar el carro.</p>
-      </div>
-      <div>
         <h3>Regalos</h3>
         <p>Tu presencia ya es suficiente. Si quieres consentirnos, preferimos lluvia de sobres.</p>
       </div>
@@ -603,6 +612,11 @@ h3{
 <!-- ═══════════ CIERRE ═══════════ -->
 <footer class="cierre">
   <div class="rev">
+    <div class="versiculo" style="margin-bottom:clamp(2.6rem,7vw,4rem)">
+      <p>Lo que Dios juntó, no lo separe el hombre.</p>
+      <cite>Marcos 10:9</cite>
+    </div>
+
     <p class="rotulo">Te esperamos</p>
     <p class="monograma">B <i>&amp;</i> P</p>
     <p class="fecha-portada">10 · 10 · 2026</p>
