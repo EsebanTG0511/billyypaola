@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className="js";</script>
 
 <!-- ═══════════ CÓMO SE VE AL COMPARTIR POR WHATSAPP ═══════════ -->
 <title>Billy &amp; Paola · 10 de octubre de 2026</title>
@@ -119,10 +120,10 @@ h3{
 .hilo{
   width:1px;height:clamp(3.5rem,9vw,6rem);
   background:linear-gradient(var(--dorado),rgba(200,164,77,.15));
-  margin:0 auto;
-  transform:scaleY(0);transform-origin:top;
+  margin:0 auto;transform-origin:top;
   transition:transform 1.1s cubic-bezier(.22,.61,.36,1);
 }
+.js .hilo{transform:scaleY(0)}
 .hilo.visible{transform:scaleY(1)}
 
 /* ═══════════════ PORTADA ═══════════════ */
@@ -313,7 +314,7 @@ h3{
 @keyframes vaiven{from{transform:translateX(-13px) rotate(-8deg)}to{transform:translateX(13px) rotate(8deg)}}
 
 /* ═══════════════ REVELADO AL DESPLAZAR ═══════════════ */
-.rev{opacity:0;transform:translateY(22px);
+.js .rev{opacity:0;transform:translateY(22px);
   transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
 .rev.visible{opacity:1;transform:none}
 
@@ -498,7 +499,7 @@ h3{
 <!-- ═══════════ IGLESIA ═══════════ -->
 <section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
   <div class="centro rev" style="margin-bottom:2.6rem">
-    <p class="rotulo">Dónde</p>
+    <p class="rotulo">La ceremonia</p>
   </div>
 
   <div class="lugar rev">
@@ -512,7 +513,12 @@ h3{
   </div>
 </section>
 
+<div class="hilo rev"></div>
 
+<section class="franja" style="padding-top:clamp(2.5rem,6vw,4rem)">
+  <div class="centro rev" style="margin-bottom:2.6rem">
+    <p class="rotulo">Y después, la fiesta</p>
+  </div>
 
   <div class="lugar rev">
     <h3>Casa Victoria</h3>
@@ -546,7 +552,7 @@ h3{
     </div>
 
     <p style="font-weight:300;color:var(--cielo)">
-      El blanco es de la novia. El azul (claro y oscuro),y el gris.
+      El blanco es de la novia. El azul, claro y oscuro, y el gris son de la fiesta.
       Todo lo demás es bienvenido.
     </p>
   </div>
@@ -561,15 +567,15 @@ h3{
     <p class="rotulo">Lo más importante</p>
     <h2 style="margin:1rem 0 1.4rem">¿Contamos<br>contigo?</h2>
     <p style="font-weight:300;color:var(--cielo);margin-bottom:2.2rem">
-      Escríbenos por WhatsApp antes del <strong style="font-weight:500;color:var(--tinta)">20 de septiembre</strong>.
+      Escríbenos por WhatsApp y cuéntanos cuántos vienen.
       Los cupos son personales: en la invitación dice cuántas personas incluye.
     </p>
     <!-- ▸ Cambia el número: 57 + celular, sin espacios ni signos -->
-    <a class="btn lleno" id="rsvp"
+    <a class="btn lleno rsvp"
        href="https://wa.me/573115662232?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20su%20matrimonio%20el%2010%20de%20octubre.%20Vamos%3A%20"
        target="_blank" rel="noopener">Confirmar por WhatsApp</a>
 
-       <a class="btn lleno" id="rsvp"
+       <a class="btn lleno rsvp"
        href="https://wa.me/573214745304?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20su%20matrimonio%20el%2010%20de%20octubre.%20Vamos%3A%20"
        target="_blank" rel="noopener">Confirmar por WhatsApp</a>
   </div>
@@ -590,7 +596,7 @@ h3{
       </div>
       <div>
         <h3>Cómo llegar</h3>
-        <p>El salón queda sobre la Carrera 4 Este con Calle 37C, en el oriente de la ciudad. Si vienes en taxi o app, pide <strong>Casa Victoria</strong>.</p>
+        <p>La ceremonia es en la Parroquia El Señor de la Columna, y la fiesta en <strong>Casa Victoria</strong>, Carrera 4 Este con Calle 37C. Los dos quedan en el oriente de la ciudad.</p>
       </div>
       <div>
         <h3>Regalos</h3>
@@ -631,15 +637,24 @@ h3{
 /* ═══════════════════ CONFIGURACIÓN ═══════════════════
    Cambia estas líneas y listo.                                     */
 
-const FECHA_BODA = new Date('2026-10-10T16:00:00-05:00');  /* cuenta regresiva */
+const FECHA_BODA = new Date('2026-10-10T18:00:00-05:00');  /* cuenta regresiva */
 const CANTIDAD_GLOBOS = window.innerWidth < 600 ? 11 : 18;  /* 0 para quitarlos */
 const PALETA = ['#C8A44D','#E3C77E','#8FB3D9','#EEF2F8'];   /* dorado y azules */
 
 const quietud = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* Si algo falla, la página se muestra completa en vez de quedar en blanco */
+window.addEventListener('error', function(){
+  document.documentElement.classList.remove('js');
+  var i = document.getElementById('intro');
+  if (i) i.remove();
+  document.body.classList.remove('bloqueado');
+});
+
 
 /* ═══════════ ENTRADA: EXPLOSIÓN QUE SE VUELVE CORAZÓN ═══════════ */
 (function(){
+ try {
   const intro = document.getElementById('intro');
   const lienzo = document.getElementById('lienzo');
 
@@ -745,6 +760,7 @@ const quietud = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
   puerta.addEventListener('click', abrir);
+  intro.addEventListener('click', abrir);
   puerta.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); abrir(); }
   });
@@ -759,7 +775,13 @@ const quietud = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Si alguien deja la página abierta sin tocar, se abre sola al minuto
      (sin música, porque el navegador no la deja) para que nadie quede trabado */
-  setTimeout(() => { if (!abierto) terminar(); }, 60000);
+  setTimeout(() => { if (!abierto) terminar(); }, 20000);
+ } catch(err){
+  document.documentElement.classList.remove('js');
+  var i = document.getElementById('intro');
+  if (i) i.remove();
+  document.body.classList.remove('bloqueado');
+ }
 })();
 
 
@@ -857,7 +879,7 @@ if (!quietud && CANTIDAD_GLOBOS > 0){
   for (let i = 0; i < CANTIDAD_GLOBOS; i++) cielo.appendChild(crearGlobo(false));
 }
 
-document.getElementById('rsvp').addEventListener('click', function(){
+document.querySelectorAll('.rsvp').forEach(function(b){ b.addEventListener('click', function(){
   if (quietud) return;
   const capa = document.getElementById('fiesta');
   for (let i = 0; i < 26; i++){
@@ -867,7 +889,7 @@ document.getElementById('rsvp').addEventListener('click', function(){
     g.addEventListener('animationend', () => g.remove());
     capa.appendChild(g);
   }
-});
+}); });
 
 
 /* ═══════════ CUENTA REGRESIVA ═══════════ */
